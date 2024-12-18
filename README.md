@@ -155,3 +155,168 @@ notion-study-todo-app/
 	•	GitHub Actions ドキュメント
 
 プロジェクトの成功を祈っています！頑張ってください😊
+
+
+
+
+
+
+English ver
+
+Notion Study Management Tool, Todo List, and Weather Information Retrieval System
+
+Overview
+
+This project is a study management and Todo list system centered around Notion. Users can input study records and Todo lists using Notion’s GUI, with data stored in Notion databases. The backend is built with Python and utilizes the Google Cloud Natural Language API to summarize data, automatically reflecting daily reviews in Notion. The entire system operates within Docker containers and is automated using GitHub Codespaces and GitHub Actions. Data visualization is achieved through Notion’s charting features.
+
+Features
+	•	Study Record Management: Easily input and manage study records using Notion’s intuitive GUI.
+	•	Todo List Management: Efficiently manage tasks and visualize progress.
+	•	Automated Summarization: Leverage Google Cloud Natural Language API to summarize data and generate daily reviews automatically.
+	•	Data Visualization: Use Notion’s charting features to visually track study and task progress.
+	•	Automation: Utilize GitHub Codespaces and GitHub Actions for CI/CD pipeline automation.
+	•	Containerization: Ensure consistency and ease of deployment with Docker.
+	•	Beginner-Friendly: Designed for beginners with straightforward setup and implementation.
+
+Technology Stack
+	•	Frontend: Notion
+	•	Backend: Python
+	•	Database: Notion Database
+	•	APIs: Notion API, Google Cloud Natural Language API
+	•	Automation: GitHub Codespaces, GitHub Actions
+	•	Containerization: Docker
+	•	Visualization: Notion’s charting features
+
+Demo
+
+Setup Instructions
+
+1. Prerequisites
+	•	GitHub Account
+	•	Notion Account
+	•	Google Cloud Account
+	•	Docker installed
+	•	GitHub Codespaces enabled
+
+2. Clone the Repository
+
+git clone https://github.com/your-username/notion-study-todo-app.git
+cd notion-study-todo-app
+
+3. Set Up GitHub Codespaces
+	1.	On the GitHub repository page, click the “Code” button and select the “Codespaces” tab.
+	2.	Click “New codespace” to launch the development environment.
+	3.	Install necessary extensions (Python, Docker, GitHub Actions, etc.).
+
+4. Configure Notion API
+	1.	Visit Notion Developers and click “+ New integration”.
+	2.	Name your integration and set the required permissions.
+	3.	Submit to receive the “Internal Integration Token” and copy it.
+	4.	In Notion, create databases for study records and Todo lists, and note their URLs for later use.
+
+5. Configure Google Cloud Natural Language API
+	1.	Log in to Google Cloud Console.
+	2.	Navigate to “API & Services” > “Library” and enable the “Natural Language API”.
+	3.	Go to “IAM & Admin” > “Service Accounts” and create a new service account.
+	4.	Assign appropriate roles (e.g., Project > Editor).
+	5.	Add a key by selecting “Add Key” > “Create New Key” > “JSON” and download the key file.
+	6.	Save the downloaded JSON file within your project and set the path in the .env file.
+
+6. Set Up Environment Variables
+
+Create a .env file in the project root with the following content:
+
+NOTION_API_TOKEN=your_notion_api_token
+NOTION_DATABASE_ID=your_notion_database_id
+GOOGLE_APPLICATION_CREDENTIALS=path_to_your_google_credentials.json
+
+Note: Ensure that the .env file is added to .gitignore to prevent sensitive information from being pushed to the repository.
+
+7. Set Up the Backend
+	1.	Install Dependencies
+
+pip install -r backend/requirements.txt
+
+
+	2.	Run the Script
+
+python backend/app.py
+
+
+
+8. Configure Docker
+	1.	Build the Docker Image
+
+docker build -t notion-study-todo-backend backend/
+
+
+	2.	Run the Docker Container
+
+docker run --env-file .env notion-study-todo-backend
+
+
+	3.	Use Docker Compose (Optional)
+
+docker-compose up --build
+
+
+
+9. Set Up GitHub Actions
+	1.	Configure GitHub Secrets
+	•	Go to the repository’s “Settings” > “Secrets and variables” > “Actions” > “New repository secret”.
+	•	Add NOTION_API_TOKEN and NOTION_DATABASE_ID.
+	•	If necessary, add Google Cloud credentials as secrets.
+	2.	Verify CI/CD Pipeline
+	•	Push changes to the main branch to trigger GitHub Actions.
+	•	Check the “Actions” tab in the repository to monitor workflow runs.
+
+10. Configure Data Visualization
+	1.	In your Notion database, click “Add a view” and create views like “Table” or “Board”.
+	2.	Utilize widgets or integrations (e.g., Notion Charts) to enable chart displays as needed.
+
+Usage
+	1.	Input Data in Notion
+	•	Enter study records and Todo lists through Notion’s GUI.
+	•	Data is automatically saved in Notion databases.
+	2.	Run the Backend
+	•	The backend script retrieves data from Notion via the API, summarizes it using Google Cloud Natural Language API, and updates Notion with the summaries.
+	3.	View Data Visualization
+	•	Check Notion’s charting features to visualize your study progress and Todo list status.
+
+Project Structure
+
+notion-study-todo-app/
+├── backend/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── docker-compose.yml
+├── .env
+├── README.md
+└── architecture_diagram.png
+
+Contribution
+	1.	Fork the Repository
+	2.	Create a New Branch (git checkout -b feature/new-feature)
+	3.	Commit Your Changes (git commit -m 'Add new feature')
+	4.	Push to the Branch (git push origin feature/new-feature)
+	5.	Open a Pull Request
+
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Support
+
+If you have any questions or issues, please open an Issue.
+
+References
+	•	Notion API Documentation
+	•	Google Cloud Natural Language API Documentation
+	•	Docker Documentation
+	•	GitHub Actions Documentation
+
+Wishing you success with your project! Good luck 😊
